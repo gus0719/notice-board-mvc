@@ -85,27 +85,29 @@ String bod_connIp;
             <span class = "column_short">조회</span>
             <span class = "ips">IP</span>
             <ul id = "lists">
+            <c:forEach
+            	var = "bodDtoL"
+            	items = "${requestScope.dtoL}"
+            	begin = "${recOfBeginPage}"
+            	end = "${recOfBeginPage + recPerPage}"
+            	varStatus="status"
+            	>
+            	<c:set var="bodDto" value="${bodDtoL.rowsByIndex}"/>
+            	<c:choose>
+            		<c:when test="${status.index < totalRecord}">
+		            	<li onclick = "valSend(${bodDto.bod_no})">
+			            	<span class = "column_short">${bodDto.bod_no}</span>
+			            	<span class = "titles">${bodDto.bod_subject}</span>
+			            	<span class = "column_short">${bodDto.bod_writer}</span>
+			            	<span id = "logtime" class = "column_short">${bodDto.bod_logtime}</span>
+			            	<span class = "column_short">${bodDto.bod_readCnt}</span>
+			            	<span class = "ips">${bodDto.bod_connIp}</span>
+		            	</li>
+            		</c:when>
+            	</c:choose>
+            	<c:otherwise/>
+            </c:forEach>
             <%
-            for(int idx = recOfBeginPage; idx < recOfBeginPage + recPerPage; idx++){
-            	// 현재 페이지의 레코드부터 현재레코드 + 10까지
-        		if(idx >= totalRecord) break; // idx가 totalRecord보다 크거나 같으면 반복 중지
-        		bod_no = dtoL.get(idx).getBod_no();
-        		bod_subject = dtoL.get(idx).getBod_subject();
-        		bod_writer = dtoL.get(idx).getBod_writer();
-        		bod_logtime = dtoL.get(idx).getBod_logtime();
-        		bod_readCnt = dtoL.get(idx).getBod_readCnt();
-        		bod_connIp = dtoL.get(idx).getBod_connIp();
-            %>
-            	<li onclick = "valSend(<%= bod_no %>)">
-	            	<span class = "column_short"><%=bod_no%></span>
-	            	<span class = "titles"><%=bod_subject%></span>
-	            	<span class = "column_short"><%=bod_writer%></span>
-	            	<span id = "logtime" class = "column_short"><%=bod_logtime%></span>
-	            	<span class = "column_short"><%=bod_readCnt%></span>
-	            	<span class = "ips"><%=bod_connIp%></span>
-            	</li>
-            <%
-            }
             if(nowBlock != 0){ // nowBlock이 0이면 뒤로가기 출력 X
             %>
             	<a class = "select" href = "<%=contextPath%>/MVCJSTLBoard.do?bodCtg=pageTitleList&recPerPage=<%=recPerPage%>&nowPage=<%=(nowBlock-1)*pagePerBlock%>&nowBlock=<%=nowBlock-1%>">≪</a>
