@@ -74,6 +74,10 @@ String bod_connIp;
         		nowBlock = paging.get("nowBlock"); // 블럭 이동할때마다 값을 할당
         	
         	int recOfBeginPage = nowPage * recPerPage; // 0 * 10 >> 페이지idx가 1일때 10 ~ 19번째 인덱스의 dto 출력
+        	pageContext.setAttribute("recOfBeginPage", recOfBeginPage);
+        	pageContext.setAttribute("recPerPage", recPerPage);
+        	pageContext.setAttribute("totalRecord", totalRecord);
+        	
         	int pageOfBeginBlock = nowBlock * pagePerBlock; // 0 * 10 >> 블럭idx가 1일때 페이지 수 : 10 ~ 19번재 인덱스의 페이지 출력
         %>
         
@@ -88,13 +92,13 @@ String bod_connIp;
             <c:forEach
             	var = "bodDtoL"
             	items = "${requestScope.dtoL}"
-            	begin = "${recOfBeginPage}"
-            	end = "${recOfBeginPage + recPerPage}"
+            	begin = "${pageScope.recOfBeginPage}"
+            	end = "${pageScope.recOfBeginPage + pageScope.recPerPage}"
             	varStatus="status"
             	>
-            	<c:set var="bodDto" value="${bodDtoL.rowsByIndex}"/>
+            	<c:set var="bodDto" value="${bodDtoL}"/>
             	<c:choose>
-            		<c:when test="${status.index < totalRecord}">
+            		<c:when test="${status.index < pageScope.totalRecord}">
 		            	<li onclick = "valSend(${bodDto.bod_no})">
 			            	<span class = "column_short">${bodDto.bod_no}</span>
 			            	<span class = "titles">${bodDto.bod_subject}</span>
@@ -105,7 +109,6 @@ String bod_connIp;
 		            	</li>
             		</c:when>
             	</c:choose>
-            	<c:otherwise/>
             </c:forEach>
             <%
             if(nowBlock != 0){ // nowBlock이 0이면 뒤로가기 출력 X

@@ -34,7 +34,8 @@ String prjPath = contextPath + "/boardMVC";
 				<ul id="lists">
 					<c:set var="list" value="${requestScope.dtoL}"/>
 					<c:forEach var="subject" items="${list}">
-						<li onclick="valSend(${subject.bod_no})"><span class="column_short">${subject.bod_no}</span>
+						<li onclick="valSend(${subject.bod_no})">
+							<span class="column_short">${subject.bod_no}</span>
 							<span class="titles">${subject.bod_subject}</span>
 							<span class="column_short">${subject.bod_writer}</span>
 							<span id="logtime" class="column_short">${subject.bod_logtime}</span>
