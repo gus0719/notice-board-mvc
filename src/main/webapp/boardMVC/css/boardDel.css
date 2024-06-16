@@ -1,0 +1,76 @@
+#wrapper{
+    margin : auto;
+    width : 500px;
+    height : 180px;
+    box-sizing: content-box;
+}
+#title{
+    margin-bottom : 1px;
+    width : 100%;
+    height : 60px;
+    box-sizing: border-box;
+    background-color : black;
+    color : white;
+    line-height: 60px;
+    text-align: center;
+    font-size : 18px;
+    font-weight: bold;
+}
+#pwd{
+    margin-bottom : 1px;
+    width : 100%;
+    box-sizing: border-box;
+    height : 60px;
+    font-size : 28px;
+    text-align: center;
+    outline : none;
+    border : 2px solid black;
+    border-radius: 5px;
+}
+#btns{
+    width : 100%;
+    height : 60px;
+    box-sizing: border-box;
+    background-color : black;
+    color : white;
+}
+#btn{
+    width : 250px;
+    margin : auto;
+}
+.btn{
+	border : none;
+	display : block;
+	cursor : pointer;
+    float : left;
+    width : 100px;
+    height : 40px;
+    position : relative;
+    top : 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+#btn > a{
+	text-decoration : none;
+	text-align : center;
+	line-height : 40px;
+	background-color : #e7e7e7;
+    color : black;
+	display : block;
+	cursor : pointer;
+    float : left;
+    width : 100px;
+    height : 40px;
+    position : relative;
+    top : 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn:hover, #btn > a:hover{
+    color : red;
+}
+.btn:first-child{
+    margin-right : 50px;
+}

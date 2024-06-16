@@ -1,0 +1,100 @@
+#wrapper{
+    width : 1080px;
+    height : auto;
+    margin : auto;
+}
+h1{
+    text-align: center;
+    margin-bottom : 10px;
+}
+#navi{
+    width : 230px;
+    box-sizing: content-box;
+    float : right;
+}
+#navi a{
+    text-decoration: none;
+    color : black;
+}
+#navi a:hover{
+    color : red;
+    text-decoration: underline;
+}
+
+span#rowCnt{
+	display : inline-block;
+	width : 230px;
+	text-align : right;
+}
+
+#columns{
+    clear : right;
+    width : 100%;
+    height : 500px;
+}
+
+/*컬럼========================*/
+span{
+    text-align: center;
+}
+#columns > .column_short, #columns > .titles, #columns > .ips{
+    background-color : black;
+    color : white;
+    font-weight: bold;
+    height : 30px;
+    line-height : 30px;
+}
+.column_short{
+    box-sizing: border-box;
+    display: inline-block;
+    border : 1px solid black;
+    width : 150px;
+}
+.titles{
+    box-sizing: border-box;
+    display: inline-block;
+    border : 1px solid black;
+    width : 250px;
+}
+.ips{
+    box-sizing: border-box;
+    display: inline-block;
+    border : 1px solid black;
+    width : 190px;
+}
+
+
+/*lists========================*/
+#lists{
+    margin-top : 5px;
+    clear : left;
+    box-sizing: content-box;
+    display: inline-block;
+    list-style-type: none;
+    padding-left : -40px;
+}
+
+#lists > .titles{
+	overflow : hidden;
+}
+#lists > li{
+	display : block;
+	width : 1080px;
+    box-sizing: content-box;
+    border-bottom : 1px solid gray;
+    margin-left : -41px;
+    cursor: pointer;
+}
+
+#lists .column_short, #lists .titles, #lists .ips{
+	line-height : 30px;
+    border : none;
+    background-color : transparent;
+    color : black;
+}
+#logtime{
+	line-height : 15px;
+}
+#lists > li:hover{
+    background-color : lightcyan;
+}
